@@ -2,9 +2,9 @@
   "name": "dok1media-thefloor-script",
   "version": "1.0.0",
   "description": "Script to combine all questions made for the floor in the format supported by the gamecomputer. It will also rename all the images & audio files to the correct format.",
-  "main": "src/index.ts",
+  "exports": null,
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "tsx src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -12,14 +12,18 @@
   },
   "author": "@vdhpieter",
   "license": "ISC",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/vdhpieter/dok1media-thefloor-script/issues"
   },
   "homepage": "https://github.com/vdhpieter/dok1media-thefloor-script#readme",
   "devDependencies": {
-    "ts-node": "^10.9.2"
+    "@types/node": "^22.2.0",
+    "tsx": "^4.17.0"
   },
   "dependencies": {
-    "xlsx": "^0.18.5"
+    "html-entities": "^2.5.2",
+    "neat-csv": "^7.0.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   }
 }
