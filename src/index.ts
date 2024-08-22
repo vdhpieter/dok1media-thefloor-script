@@ -127,6 +127,10 @@ for (const categoryFolder of categoryFolders) {
             `${inputDir}/${photoFiles[0]}`,
             `${outputDir}/${vak}_V${question["Volgorde vraag"]}.jpg`
           );
+          fs.copyFileSync(
+            `${inputDir}/${photoFiles[0]}`,
+            `output_together/${vak}_V${question["Volgorde vraag"]}.jpg`
+          );
         } else if (photoFiles.length === 2) {
           const indexOfRevealPhoto = photoFiles.findIndex((photo) => {
             return photo.toLowerCase().includes("reveal");
@@ -144,6 +148,14 @@ for (const categoryFolder of categoryFolders) {
           fs.copyFileSync(
             `${inputDir}/${photoFiles[indexOfRevealPhoto]}`,
             `${outputDir}/${vak}_R${question["Volgorde vraag"]}.jpg`
+          );
+          fs.copyFileSync(
+            `${inputDir}/${photoFiles[indexOfQuestionPhoto]}`,
+            `output_together/${vak}_V${question["Volgorde vraag"]}.jpg`
+          );
+          fs.copyFileSync(
+            `${inputDir}/${photoFiles[indexOfRevealPhoto]}`,
+            `output_together/${vak}_R${question["Volgorde vraag"]}.jpg`
           );
         } else {
           throw `${photoFiles.length} photos for ${photosForCategoryDir} ${
@@ -189,6 +201,11 @@ for (const categoryFolder of categoryFolders) {
           fs.copyFileSync(
             `${inputDir}/${audioFiles[0]}`,
             `${outputDir}/${vak}_V${question["Volgorde vraag"]}.wav`
+          );
+
+          fs.copyFileSync(
+            `${inputDir}/${audioFiles[0]}`,
+            `output_together/${vak}_V${question["Volgorde vraag"]}.wav`
           );
         } else {
           throw `${audioFiles.length} sounds for ${audioForCategoryDir} ${
