@@ -87,6 +87,7 @@ for (const categoryFolder of categoryFolders) {
 
     if (questions[0]["Soort Vraag"].toLowerCase() === "foto") {
       const vak = questions[0]["\uFEFFNr Vlak Vloer"];
+      if (vak === undefined) throw "No vak number found";
       const hoofdcategorie = questions[0].Hoofdcat;
       const subcategorie = questions[0].Subcat;
       const vraagPresentatie = questions[0]["Presentatie Vraag"];
@@ -178,7 +179,11 @@ for (const categoryFolder of categoryFolders) {
           `${vak},${vak},${hoofdcategorie},${subcategorie},`
         );
         result = result.concat(
-          `"${vraagPresentatie}",${vraagGraphics},,${question["Volgorde vraag"]},"${question.Antwoord}","${question["Extra Antwoorden / Shadow"]}","${question.Geluid}",`
+          `"${vraagPresentatie}",${vraagGraphics},,${
+            question["Volgorde vraag"]
+          },"${question.Antwoord}","${
+            question["Extra Antwoorden / Shadow"]
+          }","${question.Geluid ?? ""}",`
         );
         result = result.concat(`,,,,,,,,,Audio\n`);
 
@@ -227,7 +232,7 @@ for (const categoryFolder of categoryFolders) {
         );
         result = result.concat(
           `,,,${question["Volgorde vraag"]},,,,"${question[
-            "Presentatie Vraag"
+            "Grafiek Vraag"
             //@ts-ignore - we use a recent enough version
           ].replaceAll('"', '""')}",${question["Meerkeuze A"]},${
             question["Meerkeuze B"]
